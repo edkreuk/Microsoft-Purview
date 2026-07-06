@@ -178,10 +178,6 @@ filter = ''  # Process all tables
 5. **Never hardcode** credentials in the notebook
 6. **Use workspace-scoped permissions** for source/target Lakehouses
 
-## Related Notebooks
-
-- **NB_FMD_PURVIEW_LINEAGE_TABLE** — Registers table-level lineage only (without column mappings)
-- **NB_FMD_PROCESSING_PARALLEL_MAIN_PURVIEW** — Main orchestration notebook for Purview lineage workflows
 
 ## Support & Maintenance
 
