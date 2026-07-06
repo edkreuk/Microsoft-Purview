@@ -6,6 +6,5 @@ Microsoft-Purview is a collection of tools and resources for integrating Microso
 
 This tool extracts lineage information from Microsoft Fabric and loads it into Microsoft Purview, enabling comprehensive data governance and lineage tracking across your data estate.
 
-[Fabric to Purview Lineage](Fabric to Purview Lineage extractor/README.md)
 
 ### 🚀 [Fabric to Purview Lineage extractor](./Fabric%20to%20Purview%20Lineage%20extractor/README.md)

@@ -27,13 +27,26 @@ A dedicated service principal is required to authenticate against both Microsoft
   - `client_id` (App ID)
   - `client_secret`
 
-### 2. Microsoft Fabric Workspace Access
+### 2.Enable access in the Fabric Admin portal
+
+Sign in to the Fabric admin portal. You need to be a Fabric admin to see the tenant settings page.
+Make sure the following settings are enabled:
+
+**Admin API settings:**
+- Service principals can access read-only admin APIs
+- Service principals can access admin APIs used for update
+
+> [!NOTE]
+> In case you need to use a **security group**, add the security group to the settings above.
+> Add Workspace identity (after deployment) or Service Principal to the security groups.
+
+### 3. Microsoft Fabric Workspace Access
 The service principal must be added to **each Fabric workspace** containing the source and target Lakehouses.
 
 **Action:**
 - Navigate to each Fabric workspace → **Manage access** → Add the service principal as **Viewer**
 
-### 3. Microsoft Purview Role Assignment
+### 4. Microsoft Purview Role Assignment
 The service principal requires one of the following roles in Microsoft Purview:
 
 - **Data Curator** — grants read/write access to data assets and lineage
@@ -42,7 +55,7 @@ The service principal requires one of the following roles in Microsoft Purview:
 **Action:**
 - Navigate to **Microsoft Purview** → **Data Map** → **Collections** → select your collection → **Role assignments** → add the service principal to the desired role
 
-### 4. Network Connectivity
+### 5. Network Connectivity
 - Access to the Fabric Lakehouse SQL endpoints
 - Access to the Purview REST API
 
@@ -114,13 +127,11 @@ Configure the following parameters in the notebook before running:
   - Columns present only in target (potential missing sources)
   - Columns present in both (properly mapped)
 
-
-
 ## Dependencies
 
 The notebook requires the following libraries:
 
-- `pyapacheatlas` — Apache Atlas Python client for Purview
+- `pyapacheatlas` — Apache Atlas Python client for Purview by Will Johnson et al. https://github.com/wjohnson/pyapacheatlas
 - `pyodbc` — ODBC driver for SQL connections
 - `azure-identity` — Azure authentication
 - `requests` — HTTP client for Fabric API calls
