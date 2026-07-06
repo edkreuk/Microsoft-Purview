@@ -3,7 +3,7 @@
 ## Overview
 
 This notebook extracts **table and column-level lineage** from Microsoft Fabric Lakehouses and registers it in **Microsoft Purview**. It enables data governance and lineage tracking at the column level, allowing organizations to understand data flow and transformations across Fabric workspaces.
-![Fabric to Purview Lineage](Fabric_to_Purview_Lineage.png)
+![Fabric to Purview Lineage](./../images/Fabric_to_Purview_Lineage.png)
 
 ## Purpose
 
@@ -84,28 +84,32 @@ Configure the following parameters in the notebook before running:
 
 ## How It Works
 
-### Step 1: Authentication
+### Step 1: Donwload the notebook
+Download the deployment notebook from the folder to your local machine:
+Import the notebook into your Fabric workspace and run it in a Spark session.
+
+### Step 2: Authentication
 - Retrieves service principal credentials from Azure Key Vault
 - Establishes connections to:
   - Fabric Workspaces (for metadata extraction)
   - Purview (for lineage registration)
   - Lakehouse SQL endpoints (for table/column metadata)
 
-### Step 2: Metadata Discovery
+### Step 3: Metadata Discovery
 - Queries Lakehouse system tables (`sys.tables`, `sys.columns`, `sys.schemas`, `sys.types`)
 - Collects information about:
   - Table schemas and names
   - Column names and data types
   - Column IDs
 
-### Step 3: Column Mapping
+### Step 4: Column Mapping
 - Performs a **full outer join** between source and target columns
 - Matches columns by:
   - Table name (and optionally table schema, if `sourceschema_is_targetschema=True`)
   - Column name
 - Marks unmatched columns with `*` for visibility
 
-### Step 4: Lineage Registration
+### Step 5: Lineage Registration
 - Creates/updates Purview entities for source and target tables
 - Establishes **Process entities** that link source columns to target columns
 - Includes custom attributes such as:
@@ -113,7 +117,7 @@ Configure the following parameters in the notebook before running:
   - `schedule`: Execution schedule
   - `dataLayer`: Data layer classification
 
-### Step 5: Output
+### Step 6: Output
 - Displays all discovered columns and their mappings
 - Logs successful and failed lineage registrations to Purview
 
