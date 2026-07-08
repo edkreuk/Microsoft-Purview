@@ -84,7 +84,7 @@ Configure the following parameters in the notebook before running:
 
 ## How It Works
 
-### Step 1: Donwload the notebook
+### Step 1: Download the notebook
 Download the deployment notebook from the folder to your local machine:
 Import the notebook into your Fabric workspace and run it in a Spark session.
 
